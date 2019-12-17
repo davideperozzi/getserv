@@ -2,10 +2,10 @@ import argparse
 import sys
 import socket
 
-from drivers.base_driver import BaseDriver
-from drivers.digital_ocean_driver import DigitalOceanDriver
+from .drivers.base_driver import BaseDriver
+from .drivers.digitalocean_driver import DigitaloceanDriver
 
-drivers = [ DigitalOceanDriver ]
+drivers = [ DigitaloceanDriver ]
 
 def create_parser():
   parser = argparse.ArgumentParser(
@@ -74,5 +74,5 @@ def main():
         print(ip)
         break
 
-if __name__ == "__main__":
-  main()
+if __name__ == '__main__':
+  sys.exit(main() or 0)

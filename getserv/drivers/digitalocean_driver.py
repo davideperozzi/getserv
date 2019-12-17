@@ -7,7 +7,7 @@ import sys
 
 from .base_driver import BaseDriver
 
-class DigitalOceanDriver(BaseDriver):
+class DigitaloceanDriver(BaseDriver):
   api_base_url = 'https://api.digitalocean.com/v2/'
 
   def get_name():
@@ -15,7 +15,7 @@ class DigitalOceanDriver(BaseDriver):
 
   def create_parser(sub_parsers: argparse._SubParsersAction):
     return sub_parsers.add_parser(
-      DigitalOceanDriver.get_name(),
+      DigitaloceanDriver.get_name(),
       help='Retrieves ips from DigitalOcean droplets by tags',
       description='Retrieve node ips by tags'
     )
@@ -23,7 +23,7 @@ class DigitalOceanDriver(BaseDriver):
   def init_parser(parser: argparse.ArgumentParser):
     parser.add_argument(
       '--digitalocean-access-token',
-      default=os.environ.get('DIGITALOCEAN_ACCESS_TOKEN'),
+      default=os.environ.get('DIGITALOCEAN_ACCESS_TOKEN', ''),
       help='\
         If not set, the "DIGITALOCEAN_ACCESS_TOKEN" \
         environment variable will be used instead\
@@ -63,7 +63,7 @@ class DigitalOceanDriver(BaseDriver):
         else:
           print("Something went wrong while accessing the DigitalOcean API")
 
-        exit(1)
+        sys.exit(1)
 
     for result in results:
       for droplet in result['droplets']:
