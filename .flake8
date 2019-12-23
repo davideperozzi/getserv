@@ -1,0 +1,13 @@
+[flake8]
+ignore = # Ignore a mutliple of four indention
+         E111,
+         # Ignore hanging indent errors
+         E121
+exclude =
+    .git,
+    __pycache__,
+    docs/source/conf.py,
+    old,
+    build,
+    dist
+max-complexity = 10

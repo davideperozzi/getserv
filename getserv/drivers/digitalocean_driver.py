@@ -7,6 +7,7 @@ import sys
 
 from .base_driver import BaseDriver
 
+
 class DigitaloceanDriver(BaseDriver):
   api_base_url = 'https://api.digitalocean.com/v2/'
 
@@ -46,7 +47,7 @@ class DigitaloceanDriver(BaseDriver):
     )
 
   def fetch(self, tagSeq: str, token: str):
-    tags = [ tag.strip() for tag in tagSeq.split(',') ]
+    tags = [tag.strip() for tag in tagSeq.split(',')]
     droplet_ips = set()
     results = []
 
@@ -59,9 +60,11 @@ class DigitaloceanDriver(BaseDriver):
         results.append(json.loads(urlopen(request).read()))
       except HTTPError as e:
         if (e.code == 401):
-          print("Invalid access token for Digital ocean given: 401 Unauthorized")
+          print(
+            'Invalid access token for Digital ocean given: 401 Unauthorized'
+          )
         else:
-          print("Something went wrong while accessing the DigitalOcean API")
+          print('Something went wrong while accessing the DigitalOcean API')
 
         sys.exit(1)
 
@@ -75,4 +78,3 @@ class DigitaloceanDriver(BaseDriver):
               droplet_ips.add(network['ip_address'])
 
     return list(droplet_ips)
-

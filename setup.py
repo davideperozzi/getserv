@@ -1,14 +1,15 @@
-from setuptools import setup,find_packages
+import os
+from setuptools import setup, find_packages
 
 with open('README.md', 'r') as fh:
   long_description = fh.read()
 
 setup(
   name='getserv',
-  version='0.0.1',
+  version=os.environ.get('PACKAGE_VERSION', '0.0.0'),
   author='Davide Perozzi',
   author_email='myself@davideperozzi.com',
-  description='Retrieve a stable server to deploy stuff',
+  description='Retrieve a stable server to deploy',
   entry_points={
     'console_scripts': [
       'getserv=getserv.__main__:main'

@@ -1,5 +1,6 @@
 import argparse
 
+
 class BaseDriver:
   arg_parser: argparse.ArgumentParser
 
@@ -17,4 +18,3 @@ class BaseDriver:
 
   def run(self):
     return []
-
