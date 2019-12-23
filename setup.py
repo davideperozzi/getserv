@@ -6,7 +6,7 @@ with open('README.md', 'r') as fh:
 
 setup(
   name='getserv',
-  version=os.environ.get('PACKAGE_VERSION', '0.0.0'),
+  version=os.getenv('PACKAGE_VERSION', '0.0.0'),
   author='Davide Perozzi',
   author_email='myself@davideperozzi.com',
   description='Retrieve a stable server to deploy',
