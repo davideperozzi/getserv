@@ -1,6 +1,7 @@
 import argparse
 import sys
 import socket
+import pkg_resources
 
 from .drivers.digitalocean_driver import DigitaloceanDriver
 
@@ -51,6 +52,13 @@ def main():
     '--list-all',
     action='store_true',
     help='List all reachable servers'
+  )
+
+  main_parser.add_argument(
+    '-v',
+    '--version',
+    action='version',
+    version='getserv version ' + pkg_resources.require('getserv')[0].version
   )
 
   sub_parsers = main_parser.add_subparsers(help='drivers', dest='driver')
