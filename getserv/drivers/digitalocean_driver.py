@@ -72,6 +72,11 @@ class DigitaloceanDriver(BaseDriver):
       for droplet in result['droplets']:
         droplet_tags = droplet['tags']
 
+        # The next lines will check if the current droplet
+        # has the tags constrained by the user.
+        # If so, it'll check if the droplet is attached
+        # to a publice network in order to save the
+        # IPv4 address
         if set(tags).issubset(droplet_tags):
           for network in droplet['networks']['v4']:
             if network['type'] == 'public':
