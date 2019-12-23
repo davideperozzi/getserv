@@ -36,7 +36,7 @@ jobs:
           TWINE_NON_INTERACTIVE: 1
         run: |
           pip install twine
-          twine upload --skip-existing dist/*
+          twine upload dist/*
 
 
 
