@@ -25,7 +25,7 @@ jobs:
       - name: Build package
         if: startsWith(github.ref, 'refs/tags/v')
         run: |
-          echo "::set-env name=PACKAGE_VERSION::${GITHUB_REF/refs\/tags\/v/}"
+          export PACKAGE_VERSION=${GITHUB_REF/refs\/tags\/v/}
           pip install --upgrade setuptools wheel
           python setup.py sdist bdist_wheel
       - name: Publish to pypi
